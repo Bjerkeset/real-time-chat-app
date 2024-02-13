@@ -9,18 +9,19 @@ export default async function ChatMessages() {
   const cookieStore = cookies();
   const supabase = createClient(cookieStore);
 
-  const {data} = await supabase
+  let {data: messages, error} = await supabase
     .from("messages")
     .select("*,users(*)")
     .range(0, LIMIT_MESSAGE)
     .order("created_at", {ascending: false});
 
-  console.log("supabase messages:", data);
+  console.log("messages:", messages);
+  console.log("error:", error);
 
   return (
     <Suspense fallback={"loading.."}>
       <ListMessages />
-      <InitMessages messages={data?.reverse() || []} />
+      <InitMessages messages={messages?.reverse() || []} />
     </Suspense>
   );
 }

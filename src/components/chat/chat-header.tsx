@@ -27,7 +27,7 @@ export default function ChatHeader({user}: {user: User | undefined}) {
     <div className="h-20">
       <div className="p-5 border-b flex items-center justify-between h-full">
         <div>
-          <h1 className="text-xl font-bold">Daily Chat</h1>
+          <h1 className="text-xl font-bold">Chat Room</h1>
           <ChatPresence />
         </div>
         {user ? (

@@ -90,6 +90,7 @@ export function EditAlert() {
         text,
         is_edit: true,
       } as Imessage);
+
       const {error} = await supabase
         .from("messages")
         .update({text, is_edit: true})
